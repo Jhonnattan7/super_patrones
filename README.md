@@ -1,8 +1,8 @@
-# 🧩 Super Patrones — Prototype & Flyweight
+# Super Patrones — Prototype & Flyweight
 
 Mini-sitio estático educativo sobre los patrones de diseño **Prototype** y **Flyweight** del catálogo GoF (Gang of Four).
 
-## 📋 Descripción
+## Descripción
 
 Sitio web creado como proyecto universitario de la materia **Patrones de Diseño**. Su objetivo es servir como material de estudio real para estudiantes de ingeniería de software, con contenido claro, directo y verificable.
 
@@ -14,7 +14,7 @@ Cada patrón se explica siguiendo una estructura de **5 puntos obligatorios**:
 4. **Cuándo SÍ / Cuándo NO** — señales de aplicación vs sobre-ingeniería
 5. **Ejemplo Real** — caso verificable en un framework o sistema conocido
 
-## 🗂️ Estructura del Repositorio
+## Estructura del Repositorio
 
 ```
 super_patrones/
@@ -27,17 +27,17 @@ super_patrones/
     └── diagrama.png      ← Diagrama UML de clases
 ```
 
-## 🛠️ Tecnologías
+## Tecnologías
 
 - **HTML5** semántico
 - **Tailwind CSS** (vía CDN)
 - **PHP** (código de ejemplo ilustrativo)
 
-## 🚀 Despliegue
+## Despliegue
 
 El sitio se despliega en **Cloudflare Pages** y es accesible públicamente.
 
-## 👥 Equipo
+## Equipo
 
 Proyecto desarrollado por 6 integrantes divididos en dos subgrupos:
 
@@ -48,6 +48,6 @@ Proyecto desarrollado por 6 integrantes divididos en dos subgrupos:
 
 La tabla detallada de aportes individuales y co-revisión cruzada se encuentra en la página principal del sitio (`index.html`).
 
-## 📄 Licencia
+## Licencia
 
 Proyecto académico — Universidad, 2026.
