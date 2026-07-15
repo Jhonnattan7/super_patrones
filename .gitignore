@@ -142,5 +142,6 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
 
-# Archivo de contexto interno (no subir al repo)
+# Archivos de contexto interno (no subir al repo)
 AI_CONTEXT.md
+.ai-context
