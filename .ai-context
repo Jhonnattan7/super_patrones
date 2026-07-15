@@ -1,0 +1,104 @@
+# ============================================================
+# .ai-context — Reglas de la Cátedra para el Mini-Sitio
+# Patrones de Diseño: Prototype & Flyweight
+# ============================================================
+# Este archivo sirve como fuente de verdad para cualquier IDE
+# o asistente de IA que trabaje sobre este repositorio.
+# NO es código ejecutable; es documentación de contexto.
+# ============================================================
+
+## OBJETIVO DEL PROYECTO
+# Crear un mini-sitio web estático para enseñar los patrones
+# "Prototype" y "Flyweight" del catálogo GoF.
+# El sitio debe funcionar como material de estudio real para
+# estudiantes universitarios de ingeniería de software,
+# con un quiz posterior basado en su contenido.
+
+## FECHA LÍMITE DE ENTREGA
+# Viernes 17 de julio de 2026 a las 23:59 (hora local).
+
+## PLATAFORMA DE DESPLIEGUE
+# Cloudflare Pages (sitio estático público).
+
+## TECNOLOGÍAS PERMITIDAS
+# - HTML5 semántico
+# - Tailwind CSS (vía CDN)
+# - Código de ejemplo en PHP (~15-25 líneas por patrón)
+# - Imágenes PNG para diagramas UML
+
+## RESTRICCIONES DE CONTENIDO
+# - Cada página de patrón: entre 400 y 600 palabras.
+# - El enlace del video explicativo (YouTube / OneDrive) debe
+#   ir OBLIGATORIAMENTE en la parte superior de cada página.
+# - Código PHP debe ser un esqueleto estructural limpio.
+# - Tono: profesional, didáctico y directo. Sin relleno.
+
+## ESTRUCTURA OBLIGATORIA DE 5 PUNTOS (por patrón)
+# Cada página de patrón DEBE seguir este orden exacto:
+#
+# 1. EL PROBLEMA
+#    → Dolor concreto y real ANTES del patrón.
+#    → Ejemplificado con un caso de negocio (NO definición de manual).
+#
+# 2. LA SOLUCIÓN
+#    → Explicación conceptual de cómo el patrón resuelve el problema.
+#    → Incluir diagrama UML de clases y relaciones (imagen o ASCII).
+#
+# 3. CÓDIGO MÍNIMO
+#    → Esqueleto en PHP de ~15-25 líneas.
+#    → Para Prototype: explicar Shallow Copy vs Deep Copy y __clone().
+#    → Para Flyweight: mostrar la caché/pool de objetos compartidos.
+#
+# 4. CUÁNDO SÍ / CUÁNDO NO
+#    → 2-3 señales claras de aplicación correcta.
+#    → 2-3 señales de que sería sobre-ingeniería.
+#
+# 5. EJEMPLO REAL VERIFICABLE
+#    → Caso de uso real dentro de un framework, API o sistema conocido.
+#    → Ejemplo: Magento 2 para Prototype.
+#    → Debe ser verificable (con enlace o referencia concreta).
+
+## REGISTRO DE APORTES (index.html raíz)
+# La página principal DEBE incluir una tabla de control con:
+# - Nombre de cada uno de los 6 integrantes del grupo.
+# - Aporte concreto de cada integrante.
+# - Co-revisión cruzada (quién revisó el trabajo de quién).
+# Formato sugerido:
+# | # | Integrante | Rol / Aporte | Revisado por |
+# |---|------------|--------------|--------------|
+# | 1 |            |              |              |
+# | 2 |            |              |              |
+# | 3 |            |              |              |
+# | 4 |            |              |              |
+# | 5 |            |              |              |
+# | 6 |            |              |              |
+
+## ESTRUCTURA DE CARPETAS DEL REPOSITORIO
+# super_patrones/
+# ├── .ai-context          ← ESTE ARCHIVO (reglas de la cátedra)
+# ├── .gitignore
+# ├── AI_CONTEXT.md         ← Contexto extendido para el IDE
+# ├── README.md
+# ├── index.html            ← Página de inicio + tabla de aportes
+# │
+# ├── prototype/            ← Subgrupo Prototype (aislado en Git)
+# │   ├── index.html        ← Explicación del patrón (400-600 palabras)
+# │   └── diagrama.png      ← Diagrama UML de clases
+# │
+# └── flyweight/            ← Subgrupo Flyweight (aislado en Git)
+#     ├── index.html        ← Explicación del patrón (400-600 palabras)
+#     └── diagrama.png      ← Diagrama UML de clases
+
+## REGLAS DE COLABORACIÓN GIT
+# - Cada subgrupo trabaja SOLO dentro de su carpeta asignada.
+# - La carpeta raíz (index.html, README, .ai-context) es compartida
+#   y requiere coordinación antes de editar.
+# - Usar ramas descriptivas: prototype/feature-x, flyweight/fix-y.
+# - Conflictos de merge se resuelven con co-revisión cruzada.
+
+## NOTAS PARA EL ASISTENTE DE IA
+# - NO generes contenido fuera de la estructura de 5 puntos.
+# - Respeta los límites de palabras (400-600) estrictamente.
+# - El código PHP es ilustrativo, NO ejecutable en Cloudflare Pages.
+# - Prioriza claridad sobre complejidad en diagramas y código.
+# - Cualquier cambio estructural debe ser aprobado por el grupo.
