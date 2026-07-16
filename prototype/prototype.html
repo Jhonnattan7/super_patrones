@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <title>Prototype</title>
+</head>
+
+<body class="min-h-screen bg-gray-50 text-slate-800">
+
+    <!-- Navbar -->
+    <nav class="max-w-5xl mx-auto px-8 py-6 flex items-center justify-between">
+
+        <a href="../index.html"
+            class="flex items-center font-semibold gap-2 text-slate-500 hover:text-pink-700 transition-colors duration-200">
+
+            <svg xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.8"
+                stroke="currentColor"
+                class="size-5">
+
+                <path stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+
+            </svg>
+
+            <span>Inicio</span>
+
+        </a>
+
+        <div class="flex gap-8">
+
+            <a href="prototype.html"
+                class="font-semibold text-purple-600 underline underline-offset-4 decoration-2 transition-colors duration-200">
+
+                Prototype
+
+            </a>
+
+            <a href="../flyweight/flyweight.html"
+                class="font-semibold text-slate-500 hover:text-pink-700 transition-colors duration-200">
+
+                Flyweight
+
+            </a>
+
+        </div>
+
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-8 py-12">
+
+        <!-- Título -->
+
+        <header class="mb-14">
+
+            <h1 class="text-5xl font-bold text-purple-600 mb-2">
+                Prototype
+            </h1>
+
+            <p class="text-slate-500">
+                Patrón de diseño creacional
+            </p>
+
+            <a href="#" 
+                target="_blank" 
+                class="inline-flex items-center gap-1 mt-4 text-purple-600 hover:text-pink-700 font-medium underline underline-offset-4 transition-colors duration-200">
+
+                Video explicativo
+
+            </a>
+
+        </header>
+
+        <!-- Problema -->
+
+        <section class="mb-14">
+
+            <h2 class="text-2xl font-bold mb-1">
+                Problema
+            </h2>
+
+            <p class="text-sm text-slate-500 mb-6">
+                ¿Qué duele antes del patrón?
+            </p>
+
+            <p class="leading-8 text-justify">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae lacus ut justo vulputate interdum. Nulla facilisi. Curabitur commodo, libero vitae faucibus tempor, velit arcu efficitur erat, sed feugiat nisi mauris at sapien. Donec placerat, lorem nec malesuada pretium, purus turpis volutpat ligula, vitae hendrerit sapien risus vitae elit.
+            </p>
+
+        </section>
+
+        <!-- Solución -->
+
+        <section class="mb-14">
+
+            <h2 class="text-2xl font-bold mb-6">
+                Solución
+            </h2>
+
+            <p class="leading-8 text-justify mb-8">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque suscipit, lacus sed tincidunt dictum, sapien libero luctus ipsum, sed pellentesque neque lorem eget purus.
+            </p>
+
+            <h3 class="text-lg font-semibold mb-4">
+                Diagrama
+            </h3>
+
+            <div class="h-72 rounded-xl border-2 border-gray-300 bg-white flex items-center justify-center text-slate-400">
+
+                Espacio para el diagrama
+
+            </div>
+
+        </section>
+
+        <!-- Código -->
+
+        <section class="mb-14">
+
+            <h2 class="text-2xl font-bold mb-6">
+                Código
+            </h2>
+
+<pre class="bg-white border border-gray-200 rounded-xl p-6 overflow-x-auto shadow-md text-sm text-slate-700 font-mono"><code>class Prototype {
+    clone() {
+        return Object.create(this);
+    }
+}</code></pre>
+
+        </section>
+
+        <!-- Cuándo usarlo -->
+
+        <section class="mb-14">
+
+            <h2 class="text-2xl font-bold mb-6">
+                ¿Cuándo usarlo?
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-8">
+
+                <div class="bg-white rounded-xl shadow-md p-8">
+
+                    <h3 class="text-lg font-semibold text-green-600 mb-4">
+                        Cuándo SÍ
+                    </h3>
+
+                    <p class="leading-8 text-justify">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque suscipit, lacus sed tincidunt dictum, sapien libero luctus ipsum.
+                    </p>
+
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md p-8">
+
+                    <h3 class="text-lg font-semibold text-red-600 mb-4">
+                        Cuándo NO
+                    </h3>
+
+                    <p class="leading-8 text-justify">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque suscipit, lacus sed tincidunt dictum, sapien libero luctus ipsum.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Ejemplo real -->
+
+        <section>
+
+            <h2 class="text-2xl font-bold mb-6">
+                Ejemplo real
+            </h2>
+
+            <p class="leading-8 text-justify">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae lacus ut justo vulputate interdum. Nulla facilisi. Curabitur commodo, libero vitae faucibus tempor, velit arcu efficitur erat, sed feugiat nisi mauris at sapien.
+            </p>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>
