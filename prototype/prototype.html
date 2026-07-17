@@ -2,17 +2,18 @@
 <html lang="es">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
     <title>Prototype</title>
+
 </head>
 
 <body class="min-h-screen bg-gray-50 text-slate-800">
 
     <!-- Navbar -->
+
     <nav class="max-w-5xl mx-auto px-8 py-6 flex items-center justify-between">
 
         <a href="../index.html"
@@ -39,16 +40,12 @@
 
             <a href="prototype.html"
                 class="font-semibold text-purple-600 underline underline-offset-4 decoration-2 transition-colors duration-200">
-
                 Prototype
-
             </a>
 
             <a href="../flyweight/flyweight.html"
                 class="font-semibold text-slate-500 hover:text-pink-700 transition-colors duration-200">
-
                 Flyweight
-
             </a>
 
         </div>
@@ -72,15 +69,13 @@
             <a href="#" 
                 target="_blank" 
                 class="inline-flex items-center gap-1 mt-4 text-purple-600 hover:text-pink-700 font-medium underline underline-offset-4 transition-colors duration-200">
-
                 Video explicativo
-
             </a>
 
         </header>
 
         <!-- Problema -->
-
+         
         <section class="mb-14">
 
             <h2 class="text-2xl font-bold mb-1">
@@ -92,12 +87,12 @@
             </p>
 
             <p class="leading-8 text-justify">
-                Imaginemos que una empresa utiliza un sistema para generar reportes financieros. No obstante, construir cada uno de ellos es un proceso costoso y que toma bastante tiempo. Cada vez que se crea un reporte desde cero, el sistema debe 
+                Imaginemos que una empresa utiliza un sistema para generar reportes financieros. No obstante, construir cada uno de ellos es un proceso costoso y que toma bastante tiempo. Cada vez que se crea un reporte desde cero, el sistema debe
                 realizar varias tareas antes de dejarlo listo, como consultar la base de datos para obtener la información del catálogo de cuentas, cargar la plantilla de estilos y calcular cómo se agrupan los datos según el tipo de cliente.
              </p>
 
             <p class="leading-8 text-justify">
-                Ahora bien, si se desea generar diez reportes para diferentes clientes, el trabajo se vuelve repetitivo, ya que la mayor parte del proceso es igual, lo único que cambia es cierta 
+                Ahora bien, si se desea generar diez reportes para diferentes clientes, el trabajo se vuelve repetitivo, ya que la mayor parte del proceso es igual, lo único que cambia es cierta
                 información del cliente. Como consecuencia, crear cada reporte desde cero significa repetir el procedimiento una y otra vez, aunque nueve de los diez reportes sean prácticamente solo copias del primero y no aporten mayor valor.
             </p>
 
@@ -112,17 +107,16 @@
             </h2>
 
             <p class="leading-8 text-justify mb-8">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque suscipit, lacus sed tincidunt dictum, sapien libero luctus ipsum, sed pellentesque neque lorem eget purus.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque suscipit, lacus sed tincidunt dictum, sapien libero luctus ipsum, sed pellentesque
+                neque lorem eget purus.
             </p>
 
             <h3 class="text-lg font-semibold mb-4">
                 Diagrama
             </h3>
 
-            <div class="h-72 rounded-xl border-2 border-gray-300 bg-white flex items-center justify-center text-slate-400">
-
+            <div class="h-72 rounded-xl border-2 border-gray-300 bg-white flex items-center justify-center text-slate-400"> 
                 Espacio para el diagrama
-
             </div>
 
         </section>
@@ -159,9 +153,26 @@
                         Cuándo SÍ
                     </h3>
 
-                    <p class="leading-8 text-justify">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque suscipit, lacus sed tincidunt dictum, sapien libero luctus ipsum.
+                    <p class="leading-8 text-justify mb-4">
+                        Según Java Design Patterns (s.f.), cuándo sí aplica:
                     </p>
+
+                    <ul class="list-disc pl-5 space-y-4">
+
+                        <li class="leading-8 text-justify">
+                            <strong>Cuando crear un objeto es costoso y solo se necesitan pocas combinaciones de datos o configuraciones:</strong> se vuelve más
+                            práctico crear objetos base (prototipos) y hacer copias mediante clonación, en lugar de construirlos desde cero y configurarlos cada
+                            vez con los datos necesarios.
+                        </li>
+
+                        <li class="leading-8 text-justify">
+                            <strong>Cuando el tipo de objeto se decide en tiempo de ejecución:</strong> evita que el cliente dependa de una clase específica o tenga
+                            que crear objetos mediante instrucciones directas como
+                            <code class="bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded font-mono text-sm">new NombreConcreto()</code>. De esta forma, el código
+                            se vuelve más flexible y fácil de adapta a diferentes situaciones.
+                        </li>
+
+                    </ul>
 
                 </div>
 
@@ -171,27 +182,104 @@
                         Cuándo NO
                     </h3>
 
-                    <p class="leading-8 text-justify">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque suscipit, lacus sed tincidunt dictum, sapien libero luctus ipsum.
+                    <p class="leading-8 text-justify mb-4">
+                        De acuerdo con Spring Framework Guru (2019), cuándo no aplica:
                     </p>
 
-                </div>
+                    <ul class="list-disc pl-5 space-y-4">
 
+                        <li class="leading-8 text-justify">
+                            <strong>Cuando el objeto es simple y rápido de crear:</strong> si no representa un costo importante en tiempo o recursos, utilizar un
+                            constructor es suficiente, y usar el patrón Prototype no representa una ventaja real.
+                        </li>
+
+                        <li class="leading-8 text-justify">
+                            <strong>Cuando solo se necesita una única instancia del objeto:</strong> no existe la necesidad de crear variaciones del mismo objeto.
+                            En este caso, aplicar el patrón Prototype no aporta beneficios y únicamente agrega complejidad innecesaria al diseño.
+                        </li>
+
+                        <li class="leading-8 text-justify">
+                            <strong>Cuando el objeto tiene muchas referencias a otros objetos que pueden cambiar:</strong> una copia superficial puede hacer que el
+                            objeto original y la copia compartan las mismas referencias. Sin embargo, si estas referencias se modifican, ambas copias pueden verse
+                            afectadas y producir resultados inesperados. Por esta razón, es necesario realizar una copia profunda (<em>deep copy</em>), que es más
+                            difícil y delicada de implementar y mantener.
+                        </li>
+
+                    </ul>
+
+                </div>
+                
             </div>
 
         </section>
 
         <!-- Ejemplo real -->
 
-        <section>
+        <section class="mb-14">
 
             <h2 class="text-2xl font-bold mb-6">
                 Ejemplo real
             </h2>
 
-            <p class="leading-8 text-justify">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae lacus ut justo vulputate interdum. Nulla facilisi. Curabitur commodo, libero vitae faucibus tempor, velit arcu efficitur erat, sed feugiat nisi mauris at sapien.
+            <p class="leading-8 text-justify mb-4">
+                En PHP, el patrón <strong>Prototype</strong> ya viene incorporado en el lenguaje. Para crear una copia de un objeto se utiliza la palabra clave
+                <code class="bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded font-mono text-sm">clone</code>, que llama automáticamente al método
+                <code class="bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded font-mono text-sm">__clone()</code> cuando existe. Si no se ha definido ese método,
+                PHP realiza por defecto una copia superficial
+                de las propiedades del objeto (The PHP Group, s.f.).
             </p>
+
+            <p class="leading-8 text-justify mb-4">
+                Un caso práctico se puede observar en el framework Laravel, implementado en su <strong>Eloquent Builder</strong>. Esta clase implementa el método
+                <code class="bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded font-mono text-sm">__clone()</code> para que, cuando se clone un objeto
+                <em>builder</em>, también se clone el <em>query builder</em> interno que contiene. De esta manera, la copia tiene su propio estado y no comparte
+                información con el objeto
+                original.
+            </p>
+
+            <p class="leading-8 text-justify">
+                Gracias a este comportamiento, un desarrollador puede crear una consulta base y clonarla para generar otra con pequeñas variantes sin reconstruirla
+                desde cero. Esto reutiliza el código, facilita el mantenimiento y reduce el riesgo de modificar por error la consulta original (Merchant, 2024).
+            </p>
+
+        </section>
+
+        <!-- Referencias -->
+
+        <section>
+
+            <h2 class="text-2xl font-bold mb-6">
+                Referencias
+            </h2>
+
+            <ul class="space-y-4 text-sm text-slate-600">
+
+                <li class="leading-7 pl-8 -indent-8">
+                    Java Design Patterns. (s.f.).
+                    <em>Prototype</em>.
+                    <a href="https://java-design-patterns.com/patterns/prototype/" target="_blank" class="text-purple-600 hover:text-pink-700 underline underline-offset-2">https://java-design-patterns.com/patterns/prototype/</a>
+                </li>
+
+                <li class="leading-7 pl-8 -indent-8">
+                    Merchant, A. (2024, 17 de mayo).
+                    <em>Cloning queries in Laravel</em>.
+                    <a href="https://www.amitmerchant.com/cloning-queries-in-laravel/" target="_blank" class="text-purple-600 hover:text-pink-700 underline underline-offset-2">https://www.amitmerchant.com/cloning-queries-in-laravel/</a>
+                </li>
+
+                <li class="leading-7 pl-8 -indent-8">
+                    Spring Framework Guru. (2019, 29 de mayo).
+                    <em>Prototype pattern</em>.
+                    <a href="https://springframework.guru/gang-of-four-design-patterns/prototype-pattern/" target="_blank" class="text-purple-600 hover:text-pink-700 underline underline-offset-2">springframework.guru/.../prototype-pattern</a>
+                </li>
+
+                <li class="leading-7 pl-8 -indent-8">
+                    The PHP Group. (s.f.).
+                    <em>Object cloning</em>.
+                    PHP Manual.
+                    <a href="https://www.php.net/manual/en/language.oop5.cloning.php" target="_blank" class="text-purple-600 hover:text-pink-700 underline underline-offset-2">https://www.php.net/manual/en/language.oop5.cloning.php</a>
+                </li>
+
+            </ul>
 
         </section>
 
