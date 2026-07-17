@@ -86,14 +86,19 @@
                 ¿Qué duele antes del patrón?
             </p>
 
-            <p class="leading-8 text-justify">
+            <p class="leading-8 text-justify mb-4">
                 Imaginemos que una empresa utiliza un sistema para generar reportes financieros. No obstante, construir cada uno de ellos es un proceso costoso y que toma bastante tiempo. Cada vez que se crea un reporte desde cero, el sistema debe
                 realizar varias tareas antes de dejarlo listo, como consultar la base de datos para obtener la información del catálogo de cuentas, cargar la plantilla de estilos y calcular cómo se agrupan los datos según el tipo de cliente.
              </p>
 
-            <p class="leading-8 text-justify">
-                Ahora bien, si se desea generar diez reportes para diferentes clientes, el trabajo se vuelve repetitivo, ya que la mayor parte del proceso es igual, lo único que cambia es cierta
+            <p class="leading-8 text-justify mb-4">
+                Ahora bien, si se desea generar diez reportes para diferentes clientes, el trabajo se vuelve repetitivo, ya que la mayor parte del proceso es igual, lo único que cambia es cierta 
                 información del cliente. Como consecuencia, crear cada reporte desde cero significa repetir el procedimiento una y otra vez, aunque nueve de los diez reportes sean prácticamente solo copias del primero y no aporten mayor valor.
+            </p>
+
+            <p class="leading-8 text-justify mb-4">
+                Además, este problema no es solo de repetición de procesos, la lógica para construir un reporte completo termina mezclada con el código que solo necesita generar una copia para otro cliente,
+                lo que hace que el sistema sea más difícil de mantener y comprender.
             </p>
 
         </section>
@@ -106,18 +111,25 @@
                 Solución
             </h2>
 
-            <p class="leading-8 text-justify mb-8">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque suscipit, lacus sed tincidunt dictum, sapien libero luctus ipsum, sed pellentesque
-                neque lorem eget purus.
+            <p class="leading-8 text-justify mb-4">
+                Para solucionar este problema se usa el patrón <strong>Prototype</strong>, el cual, según (GeeksforGeeks, 2025), se utiliza cuando una operación es costosa y requiere demasiado tiempo. En lugar de construir cada reporte desde cero,
+                se crea un reporte base y los demás se generan a partir de este. De esta forma, las tareas más pesadas para dejar listo el reporte solo se realizan una vez.
+            </p>
+
+            <p class="leading-8 text-justify mb-4">
+                De esta manera, cuando se necesita un reporte para otro cliente, simplemente se clona el reporte base y se modifican únicamente los datos que varían. Así, la misma estructura puede reutilizarse tantas veces como sea necesario, evitando repetir todo el proceso de construcción. Así pues, para que esto sea posible,
+                se define una interfaz que declara el método <code class="bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded font-mono text-sm">clonar(),</code> sin necesidad de conocer la clase concreta del objeto que se desea copiar.
             </p>
 
             <h3 class="text-lg font-semibold mb-4">
                 Diagrama
             </h3>
 
-            <div class="h-72 rounded-xl border-2 border-gray-300 bg-white flex items-center justify-center text-slate-400"> 
-                Espacio para el diagrama
+            <div class="h-100 rounded-xl border-2 border-gray-300 bg-white flex items-center justify-center text-slate-400">
+                <img src="prototype.png" alt="Diagrama del patrón Prototype" class="max-h-full max-w-full object-contain">
             </div>
+
+            <div class="mt-2"><p class="text-sm text-slate-500 mb-6 space-y-4">Fuente. Elaboración propia.</p></div>
 
         </section>
 
@@ -129,11 +141,32 @@
                 Código
             </h2>
 
-<pre class="bg-white border border-gray-200 rounded-xl p-6 overflow-x-auto shadow-md text-sm text-slate-700 font-mono"><code>class Prototype {
-    clone() {
-        return Object.create(this);
+<pre class="bg-white border border-gray-200 rounded-xl p-6 overflow-x-auto shadow-md text-sm text-slate-700 font-mono"><code>
+interface ReportePrototype {
+    public function clonar(): ReportePrototype;
+}
+class ReporteFinanciero implements ReportePrototype {
+    private array $catalogoCuentas;
+    private string $nombreCliente;
+    public function __construct(array $catalogoCuentas) {
+        $this->catalogoCuentas = $catalogoCuentas;
     }
-}</code></pre>
+    public function clonar(): ReportePrototype {
+        return clone $this;
+    }
+    public function __clone(): void {
+        $this->catalogoCuentas = array_map(fn($c) => clone $c, $this->catalogoCuentas);
+        $this->nombreCliente = "";
+    }
+    public function setNombreCliente(string $nombre): void {
+        $this->nombreCliente = $nombre;
+    }
+}
+$base = new ReporteFinanciero($catalogo);
+$reporteBancoX = $base->clonar();
+$reporteBancoX->setNombreCliente("Banco X");
+// Aquí solo hay una referencia (catalogoCuentas), no "muchas referencias que cambian" como se menciona en la siguiente sección, por eso el deep copy sigue siendo manejable
+</code></pre>
 
         </section>
 
@@ -253,6 +286,12 @@
             </h2>
 
             <ul class="space-y-4 text-sm text-slate-600">
+
+                 <li class="leading-7 pl-8 -indent-8">
+                    GeeksforGeeks. (2025, 3 de enero)
+                    <em>Prototype design pattern</em>.
+                    <a href="https://www.geeksforgeeks.org/prototype-design-pattern/" target="_blank" class="text-purple-600 hover:text-pink-700 underline underline-offset-2">https://www.geeksforgeeks.org/prototype-design-pattern/</a>
+                </li>
 
                 <li class="leading-7 pl-8 -indent-8">
                     Java Design Patterns. (s.f.).
