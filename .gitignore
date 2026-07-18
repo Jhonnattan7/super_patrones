@@ -145,3 +145,8 @@ vite.config.ts.timestamp-*
 # Archivos de contexto interno (no subir al repo)
 AI_CONTEXT.md
 .ai-context
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
