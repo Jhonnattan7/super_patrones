@@ -3,13 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Aprende sobre el patrón de diseño Flyweight: El problema que resuelve, diagrama UML, código mínimo y casos de uso en la vida real.">
-    <meta name="author" content="Jhonnatan Peñate">
+    <meta
+      name="description"
+      content="Aprende sobre el patrón de diseño Flyweight: El problema que resuelve, diagrama UML, código mínimo y casos de uso en la vida real."
+    />
+    <meta name="author" content="Jhonnatan Peñate" />
 
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+    />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <script>document.addEventListener('DOMContentLoaded', () => hljs.highlightAll());</script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => hljs.highlightAll());
+    </script>
 
     <title>Flyweight</title>
   </head>
@@ -65,7 +73,7 @@
         <p class="text-slate-500">Patrón de diseño estructural</p>
 
         <a
-          href="#"
+          href="https://www.youtube.com/watch?v=jL9v2pwFoyo"
           target="_blank"
           class="inline-flex items-center gap-1 mt-4 text-purple-600 hover:text-pink-700 font-medium underline underline-offset-4 transition-colors duration-200"
         >
@@ -88,11 +96,20 @@
           actual.
         </p>
 
-        <div class="my-14 rounded-xl border border-gray-200 shadow-md overflow-hidden">
-          <div class="bg-slate-100 border-b border-gray-200 px-4 py-2 flex items-center gap-2">
-              <span class="text-xs font-semibold text-slate-500 uppercase tracking-wide">PHP (Problema)</span>
+        <div
+          class="my-14 rounded-xl border border-gray-200 shadow-md overflow-hidden"
+        >
+          <div
+            class="bg-slate-100 border-b border-gray-200 px-4 py-2 flex items-center gap-2"
+          >
+            <span
+              class="text-xs font-semibold text-slate-500 uppercase tracking-wide"
+              >PHP (Problema)</span
+            >
           </div>
-          <pre class="overflow-x-auto text-sm"><code class="language-php">class Tree {
+          <pre
+            class="overflow-x-auto text-sm"
+          ><code class="language-php">class Tree {
     private float $x; // 8 bytes
     private float $y; // 8 bytes
     private float $z; // 8 bytes
@@ -117,11 +134,11 @@
         </div>
 
         <p class="leading-8 text-justify">
-          El problema ocurre cuando se intenta renderizar un bosque realista
-          con, digamos,
-          <strong>1,000,000 de árboles</strong>. Si cada árbol se instancia como
-          un objeto independiente que carga su propio modelo 3D y texturas de
-          alta resolución (unos 15 MB por objeto), el juego consumirá
+          Como señala el canal Hello Byte (2024), en un juego masivo en línea
+          (MMORPG) con miles de árboles y elementos en escena, instanciar cada
+          uno por separado consume demasiada memoria. Si cada árbol se instancia
+          como un objeto independiente que carga su propio modelo 3D y texturas
+          de alta resolución (unos 15 MB por objeto), el juego consumirá
           rápidamente gigabytes de memoria RAM hasta colapsar con un error de
           <em>Out of Memory</em> antes de que el jugador pueda ver el mapa.
           Duplicar datos idénticos por cada coordenada individual es un
@@ -138,32 +155,48 @@
           El patrón <strong>Flyweight</strong> resuelve este problema separando
           el estado de cada árbol en dos partes. Por un lado está el
           <strong>estado intrínseco</strong>: los datos que son idénticos para
-          todos los árboles de una misma especie, como el modelo 3D
-          (<code class="bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded font-mono text-sm">mesh3DData</code>)
-          y la textura (<code class="bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded font-mono text-sm">texturePng</code>).
-          Ese estado se guarda <strong>una sola vez</strong> en un objeto compartido
-          (el <em>flyweight</em>) en lugar de duplicarse en cada árbol.
+          todos los árboles de una misma especie, como el modelo 3D (<code
+            class="bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded font-mono text-sm"
+            >mesh3DData</code
+          >) y la textura (<code
+            class="bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded font-mono text-sm"
+            >texturePng</code
+          >). Ese estado se guarda <strong>una sola vez</strong> en un objeto
+          compartido (el <em>flyweight</em>) en lugar de duplicarse en cada
+          árbol.
         </p>
 
         <p class="leading-8 text-justify mb-8">
-          Por otro lado está el <strong>estado extrínseco</strong>: los datos que sí
-          cambian entre árboles, como la posición <span class="italic">(x, y, z)</span>
-          y la vida actual. Este estado no se guarda dentro del flyweight, sino que el
-          objeto que lo usa (<code class="bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded font-mono text-sm">Tree</code>)
-          se lo pasa cada vez que lo necesita. Una <strong>fábrica</strong>
-          (<code class="bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded font-mono text-sm">TreeFactory</code>)
-          se encarga de crear un único flyweight por combinación de especie/color y
-          reutilizarlo, así que con solo unas pocas decenas de objetos pesados en
-          memoria se pueden representar millones de árboles.
+          Por otro lado está el <strong>estado extrínseco</strong>: los datos
+          que sí cambian entre árboles, como la posición
+          <span class="italic">(x, y, z)</span> y la vida actual. Este estado no
+          se guarda dentro del flyweight, sino que el objeto que lo usa (<code
+            class="bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded font-mono text-sm"
+            >Tree</code
+          >) se lo pasa cada vez que lo necesita. Una
+          <strong>fábrica</strong> (<code
+            class="bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded font-mono text-sm"
+            >TreeFactory</code
+          >) se encarga de crear un único flyweight por combinación de
+          especie/color y reutilizarlo, así que con solo unas pocas decenas de
+          objetos pesados en memoria se pueden representar millones de árboles.
         </p>
 
         <h3 class="text-lg font-semibold mb-4">Diagrama</h3>
 
-        <div class="h-100 rounded-xl border-2 border-gray-300 bg-white flex items-center justify-center">
-          <img src="flyweight.png" alt="Diagrama del patrón Flyweight" class="max-h-full max-w-full object-contain">
+        <div
+          class="h-100 rounded-xl border-2 border-gray-300 bg-white flex items-center justify-center"
+        >
+          <img
+            src="flyweight.png"
+            alt="Diagrama del patrón Flyweight"
+            class="max-h-full max-w-full object-contain"
+          />
         </div>
 
-        <div class="mt-2"><p class="text-sm text-slate-500 mb-6">Fuente. Elaboración propia.</p></div>
+        <div class="mt-2">
+          <p class="text-sm text-slate-500 mb-6">Fuente. Elaboración propia.</p>
+        </div>
       </section>
 
       <!-- Código -->
@@ -171,11 +204,20 @@
       <section class="mb-14">
         <h2 class="text-2xl font-bold mb-6">Código</h2>
 
-        <div class="rounded-xl border border-gray-200 shadow-md overflow-hidden">
-          <div class="bg-slate-100 border-b border-gray-200 px-4 py-2 flex items-center gap-2">
-              <span class="text-xs font-semibold text-slate-500 uppercase tracking-wide">PHP (Solución)</span>
+        <div
+          class="rounded-xl border border-gray-200 shadow-md overflow-hidden"
+        >
+          <div
+            class="bg-slate-100 border-b border-gray-200 px-4 py-2 flex items-center gap-2"
+          >
+            <span
+              class="text-xs font-semibold text-slate-500 uppercase tracking-wide"
+              >PHP (Solución)</span
+            >
           </div>
-          <pre class="overflow-x-auto text-sm"><code class="language-php">interface TreeType {
+          <pre
+            class="overflow-x-auto text-sm"
+          ><code class="language-php">interface TreeType {
     public function render(float $x, float $y, float $z, int $health): void;
 }
 class ConcreteTreeType implements TreeType {
@@ -228,20 +270,28 @@ $bosque = [new Tree(120.5, 0, 340.2, 100, $pino), new Tree(121.0, 0, 341.0, 100,
 
             <ul class="list-disc pl-5 space-y-4">
               <li class="leading-8 text-justify">
-                <strong>Cuando hay que crear una cantidad enorme de objetos parecidos</strong>
+                <strong
+                  >Cuando hay que crear una cantidad enorme de objetos
+                  parecidos</strong
+                >
                 (cientos de miles, como los árboles del bosque) y eso ya está
                 consumiendo toda la memoria disponible.
               </li>
               <li class="leading-8 text-justify">
-                <strong>Cuando gran parte del estado se repite entre esos objetos</strong>
+                <strong
+                  >Cuando gran parte del estado se repite entre esos
+                  objetos</strong
+                >
                 y se puede separar con claridad entre lo compartido (intrínseco)
-                y lo que cambia por instancia (extrínseco). Si casi nada se repite,
-                no hay mucho que ganar.
+                y lo que cambia por instancia (extrínseco). Si casi nada se
+                repite, no hay mucho que ganar.
               </li>
               <li class="leading-8 text-justify">
-                <strong>Cuando ya se comprobó que el problema es de memoria</strong>,
-                no solo una sospecha. Meterlo "por si acaso" antes de medir el consumo
-                real es adelantarse a un problema que quizás nunca llega.
+                <strong
+                  >Cuando ya se comprobó que el problema es de memoria</strong
+                >, no solo una sospecha. Meterlo "por si acaso" antes de medir
+                el consumo real es adelantarse a un problema que quizás nunca
+                llega.
               </li>
             </ul>
           </div>
@@ -262,17 +312,24 @@ $bosque = [new Tree(120.5, 0, 340.2, 100, $pino), new Tree(121.0, 0, 341.0, 100,
                 nadie se beneficia.
               </li>
               <li class="leading-8 text-justify">
-                <strong>Cuando el estado de los objetos casi no se repite entre sí:</strong>
-                si cada instancia termina siendo prácticamente única, dividirla en
-                intrínseco/extrínseco no ahorra memoria de verdad, solo complica el diseño.
+                <strong
+                  >Cuando el estado de los objetos casi no se repite entre
+                  sí:</strong
+                >
+                si cada instancia termina siendo prácticamente única, dividirla
+                en intrínseco/extrínseco no ahorra memoria de verdad, solo
+                complica el diseño.
               </li>
               <li class="leading-8 text-justify">
-                <strong>Cuando recalcular el estado extrínseco sale caro:</strong> si el
-                dato que ya no se guarda en el flyweight hay que reconstruirlo cada
-                vez que se llama a un método, se puede terminar cambiando RAM por
-                ciclos de CPU. A eso hay que sumarle que el código queda menos obvio:
-                cualquiera que entre nuevo al proyecto se va a preguntar por qué el
-                estado de una misma entidad está partido en dos clases distintas.
+                <strong
+                  >Cuando recalcular el estado extrínseco sale caro:</strong
+                >
+                si el dato que ya no se guarda en el flyweight hay que
+                reconstruirlo cada vez que se llama a un método, se puede
+                terminar cambiando RAM por ciclos de CPU. A eso hay que sumarle
+                que el código queda menos obvio: cualquiera que entre nuevo al
+                proyecto se va a preguntar por qué el estado de una misma
+                entidad está partido en dos clases distintas.
               </li>
             </ul>
           </div>
@@ -285,26 +342,54 @@ $bosque = [new Tree(120.5, 0, 340.2, 100, $pino), new Tree(121.0, 0, 341.0, 100,
         <h2 class="text-2xl font-bold mb-6">Ejemplo real</h2>
 
         <p class="leading-8 text-justify mb-4">
-          Java implementa Flyweight en su clase <code class="bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded font-mono text-sm">Integer</code>.
-          Al hacer <em>autoboxing</em> de valores entre -128 y 127, la JVM no crea un objeto nuevo
-          cada vez: reutiliza instancias ya creadas desde una caché interna
-          (<code class="bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded font-mono text-sm">IntegerCache</code>),
-          documentada en el propio Javadoc de la clase (Oracle, s.f.). Por eso
-          <code class="bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded font-mono text-sm">Integer.valueOf(100) == Integer.valueOf(100)</code>
-          es <code class="bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded font-mono text-sm">true</code>,
-          pero fuera de ese rango cada valor sí genera un objeto distinto: es exactamente el
-          balance intrínseco/extrínseco del patrón, aplicado a los enteros más usados.
+          Java implementa Flyweight en su clase
+          <code
+            class="bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded font-mono text-sm"
+            >Integer</code
+          >. Al hacer <em>autoboxing</em> de valores entre -128 y 127, la JVM no
+          crea un objeto nuevo cada vez: reutiliza instancias ya creadas desde
+          una caché interna (<code
+            class="bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded font-mono text-sm"
+            >IntegerCache</code
+          >), documentada en el propio Javadoc de la clase (Oracle, s.f.). Por
+          eso
+          <code
+            class="bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded font-mono text-sm"
+            >Integer.valueOf(100) == Integer.valueOf(100)</code
+          >
+          es
+          <code
+            class="bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded font-mono text-sm"
+            >true</code
+          >, pero fuera de ese rango cada valor sí genera un objeto distinto: es
+          exactamente el balance intrínseco/extrínseco del patrón, aplicado a
+          los enteros más usados.
         </p>
 
         <p class="leading-8 text-justify">
-          En el mundo PHP hay un caso equivalente en <strong>Doctrine DBAL</strong>. Su registro de tipos,
-          <code class="bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded font-mono text-sm">Type::getType()</code>,
-          no crea un objeto <code class="bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded font-mono text-sm">Type</code>
-          nuevo por cada columna de cada entidad: mantiene un registro interno y devuelve
-          siempre la misma instancia para un mismo tipo (por ejemplo, <code class="bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded font-mono text-sm">"integer"</code>
-          o <code class="bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded font-mono text-sm">"datetime"</code>),
-          tal como documenta el propio proyecto (Doctrine Project, s.f.). Con miles de entidades mapeadas,
-          esa reutilización evita instanciar el mismo objeto de tipo una y otra vez.
+          En el mundo PHP hay un caso equivalente en
+          <strong>Doctrine DBAL</strong>. Su registro de tipos,
+          <code
+            class="bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded font-mono text-sm"
+            >Type::getType()</code
+          >, no crea un objeto
+          <code
+            class="bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded font-mono text-sm"
+            >Type</code
+          >
+          nuevo por cada columna de cada entidad: mantiene un registro interno y
+          devuelve siempre la misma instancia para un mismo tipo (por ejemplo,
+          <code
+            class="bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded font-mono text-sm"
+            >"integer"</code
+          >
+          o
+          <code
+            class="bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded font-mono text-sm"
+            >"datetime"</code
+          >), tal como documenta el propio proyecto (Doctrine Project, s.f.).
+          Con miles de entidades mapeadas, esa reutilización evita instanciar el
+          mismo objeto de tipo una y otra vez.
         </p>
       </section>
 
@@ -315,21 +400,48 @@ $bosque = [new Tree(120.5, 0, 340.2, 100, $pino), new Tree(121.0, 0, 341.0, 100,
 
         <ul class="space-y-4 text-sm text-slate-600">
           <li class="leading-7 pl-8 -indent-8">
+            Hello Byte. (2024, 27 julio).
+            <em>Flyweight Design Pattern: Easy Guide for Beginners</em> [Vídeo].
+            YouTube.
+            <a
+              href="https://www.youtube.com/watch?v=6cj-VxC8CxI"
+              target="_blank"
+              class="text-purple-600 hover:text-pink-700 underline underline-offset-2"
+              >youtube.com/watch?v=6cj-VxC8CxI</a
+            >
+          </li>
+
+          <li class="leading-7 pl-8 -indent-8">
             Doctrine Project. (s.f.).
             <em>Custom mapping types</em>. Doctrine DBAL Documentation.
-            <a href="https://www.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/types.html" target="_blank" class="text-purple-600 hover:text-pink-700 underline underline-offset-2">doctrine-project.org/.../types.html</a>
+            <a
+              href="https://www.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/types.html"
+              target="_blank"
+              class="text-purple-600 hover:text-pink-700 underline underline-offset-2"
+              >doctrine-project.org/.../types.html</a
+            >
           </li>
 
           <li class="leading-7 pl-8 -indent-8">
             Oracle. (s.f.).
             <em>Integer (Java SE documentation)</em>.
-            <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html" target="_blank" class="text-purple-600 hover:text-pink-700 underline underline-offset-2">docs.oracle.com/.../Integer.html</a>
+            <a
+              href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html"
+              target="_blank"
+              class="text-purple-600 hover:text-pink-700 underline underline-offset-2"
+              >docs.oracle.com/.../Integer.html</a
+            >
           </li>
 
           <li class="leading-7 pl-8 -indent-8">
             Refactoring Guru. (s.f.).
             <em>Flyweight</em>.
-            <a href="https://refactoring.guru/design-patterns/flyweight" target="_blank" class="text-purple-600 hover:text-pink-700 underline underline-offset-2">https://refactoring.guru/design-patterns/flyweight</a>
+            <a
+              href="https://refactoring.guru/design-patterns/flyweight"
+              target="_blank"
+              class="text-purple-600 hover:text-pink-700 underline underline-offset-2"
+              >https://refactoring.guru/design-patterns/flyweight</a
+            >
           </li>
         </ul>
       </section>
